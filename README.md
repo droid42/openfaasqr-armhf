@@ -12,3 +12,7 @@ faas-cli build -f openfaas-qr.yml
 faas-cli push -f openfaas-qr.yml
 faas-cli deploy -f openfaas-qr.yml
 ```
+
+# Libs
+
+https://github.com/skip2/go-qrcode

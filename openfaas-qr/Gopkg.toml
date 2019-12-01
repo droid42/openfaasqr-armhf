@@ -1,5 +1,7 @@
 # Gopkg.toml
 
+required = ["github.com/skip2/go-qrcode"]
+
 ignored = ["github.com/openfaas-incubator/go-function-sdk"]
 
 [prune]
