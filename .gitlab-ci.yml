@@ -15,7 +15,7 @@ docker-build:
   script:
     - apk add --no-cache git
     - if [ -f "./faas-cli" ] ; then cp ./faas-cli /usr/local/bin/faas-cli || 0 ; fi
-    - if [ ! -f "/usr/local/bin/faas-cli" ] ; then apk add --no-cache curl git && curl -sSL cli.openfaas.com | sh && chmod +x /usr/local/bin/faas-cli && /usr/local/bin/faas-cli template pull && cp /usr/local/bin/faas-cli ./faas-cli ; fi
+    - if [ ! -f "/usr/local/bin/faas-cli" ] ; then apk add --no-cache curl git && curl -sSL cli.openfaas.com | sh && chmod +x /usr/local/bin/faas-cli && /usr/local/bin/faas-cli template pull && faas-cli template pull https://github.com/openfaas-incubator/golang-http-template.git && cp /usr/local/bin/faas-cli ./faas-cli ; fi
 
     # Build Docker image
     - /usr/local/bin/faas-cli build -f openfaas-qr.yml --tag=sha --parallel=2
