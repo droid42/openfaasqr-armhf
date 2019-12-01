@@ -21,9 +21,9 @@ docker-build:
     - /usr/local/bin/faas-cli build --tag=sha --parallel=2
 
     # Login & Push Docker image to private repo
-    #- echo -n "$CI_DOCKER_LOGIN" | docker login --username admin --password-stdin ae-reg.team-serverless.xyz
-    #- /usr/local/bin/faas-cli push --tag=sha
-    #- echo -n "$CI_OPENFAAS_PASSWORD" | /usr/local/bin/faas-cli login --username admin --password-stdin
+    - echo -n "$CI_DOCKER_PASSWORD" | docker login --username $CI_DOCKER_USER --password-stdin
+    - /usr/local/bin/faas-cli push --tag=sha
+    - echo -n "$CI_OPENFAAS_PASSWORD" | /usr/local/bin/faas-cli login --username admin --password-stdin
 
     # Deploy function from private repo
     #- /usr/local/bin/faas-cli deploy --tag=sha --send-registry-auth
