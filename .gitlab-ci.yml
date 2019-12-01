@@ -23,10 +23,10 @@ docker-build:
     # Login & Push Docker image to private repo
     - echo -n "$CI_DOCKER_PASSWORD" | docker login --username $CI_DOCKER_USER --password-stdin
     - /usr/local/bin/faas-cli push -f openfaas-qr.yml --tag=sha
-    - echo -n "$CI_OPENFAAS_PASSWORD" | /usr/local/bin/faas-cli login -g http://192.168.178.231 --username admin --password-stdin
+    - echo -n "$CI_OPENFAAS_PASSWORD" | /usr/local/bin/faas-cli login --gateway http://192.168.178.231 --username admin --password-stdin
 
     # Deploy function from private repo
-    - /usr/local/bin/faas-cli deploy -f openfaas-qr.yml --tag=sha --send-registry-auth
+    - /usr/local/bin/faas-cli deploy -f openfaas-qr.yml --gateway http://192.168.178.231 --tag=sha --send-registry-auth
 
   only:
     - master
